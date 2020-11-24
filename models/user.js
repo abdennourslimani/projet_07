@@ -12,22 +12,22 @@ const User = (user) => {
 
 // CRÉATION D'UN NOUVEL UTILISATEUR
 
-User.create = (newUser, result) => {
+User.create = (newUser, callback) => {
     mySQLConnexion.query("INSERT INTO  Users SET ?", newUser, (err, res) => {
         if (err) {
             console.log("erreur: ", err);
-            result(err, null);
+            callback(err, null);
             return;
         }
         console.log("Création de l'utilisateur : ", { id: res.insertId, ...newUser });
-        result(null, { id: res.insertId, ...newUser });
+        callback(null, { id: res.insertId, ...newUser });
     });
 }
 
 // RÉCUPÉRATION D'UN UTILISATEUR AVEC SON EMAIL
 
 User.findByEmail = (email, callback) => {
-    mySQLConnextion.query(`SELECT * FROM Users WHERE email = '${email}'`, (err, res) => {
+    mySQLConnexion.query(`SELECT * FROM Users WHERE email = '${email}'`, (err, res) => {
         if (err) {
             console.log('error when login', err);
             callback(err, null);
@@ -42,5 +42,25 @@ User.findByEmail = (email, callback) => {
 
     });
 }
+
+
+
+//remove by id
+
+User.removeById = (id, callback) => {
+    mySQLConnexion.query("DELETE FROM Users WHERE id = ?", id, (err, res) => {
+        if (err) {
+            console.log("there is an error  ", err);
+            callback(null, err);
+            return;
+        }
+        if (res.affectedRows == 0) {
+            callback({ kind: "not_found" }, null);
+            return;
+        }
+        console.log("user removed succefully ", id);
+        callback(null, res);
+    });
+};
 
 module.exports = User;

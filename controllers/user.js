@@ -44,10 +44,29 @@ exports.login = (req, res, next) => {
                 res.status(200).json({
                         userId: user._id,
                         token: jwt.sign({ userId: user._id },
-                            'RANDOM_TOKEN_SECRET', { expiration: '24h' }
+                            'RANDOM_TOKEN_SECRET', { expiresIn: '24h' }
                         )
                     })
                     .catch(error => res.status(500).json({ error }));
             })
     });
 }
+
+
+// remove user byID
+
+exports.delete = (req, res, next) => {
+    User.removeById(req.params.userId, (err, data) => {
+        if (err) {
+            if (err.kind == 'not_found') {
+                res.status(404).send({ message: 'user not found with' + req.params.userId })
+            } else {
+                res.status(500).send({ message: 'error to find user by email' + req.params.userId })
+            }
+        }
+        res.status(200).send({ message: 'user remove with success' })
+
+
+    });
+
+};
