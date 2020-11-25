@@ -20,14 +20,44 @@ exports.createPost = (req, res) => {
 
 
 exports.getAllPosts = (req, res) => {
+    Post.getAllPosts((err, posts) => {
+        if (err)
+            res.status(500).send({ message: 'no post found' + err });
+        else {
+            // recuperate comments
+            Comment.getAllComments((err, comments) => {
+                if (err) {
+                    res.status(500).send({ message: 'no comments found!' + err });
+                } else {
+                    comments.forEach(com => {
 
-
-
+                        // à rajouter push comments to posts
+                    })
+                    res.send(articles)
+                }
+            })
+        }
+    })
 };
 
 
 
 exports.getOnePost = (req, res) => {
+    Post.getOnePost(req.params.postId, (err, posts) => {
+        if (err) {
+            res.status(500).send({ message: 'no post found!' + err });
+        } else {
+            Commentaire.getAllComments((err, comments) => {
+                if (err) {
+                    res.status(500).send({ message: 'On a rien trouvé !' + err });
+                }
+
+                // à rajouter push comments to posts
+
+                res.send(posts)
+            })
+        }
+    })
 
 
 
