@@ -15,7 +15,6 @@ const User = (user) => {
 User.create = (newUser, callback) => {
     mySQLConnexion.query("INSERT INTO  Users SET ?", newUser, (err, res) => {
         if (err) {
-            console.log("erreur: ", err);
             callback(err, null);
             return;
         }
@@ -50,8 +49,7 @@ User.findByEmail = (email, callback) => {
 User.removeById = (id, callback) => {
     mySQLConnexion.query("DELETE FROM Users WHERE id = ?", id, (err, res) => {
         if (err) {
-            console.log("there is an error  ", err);
-            callback(null, err);
+            callback(err, null);
             return;
         }
         if (res.affectedRows == 0) {
