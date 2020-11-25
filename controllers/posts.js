@@ -1,4 +1,5 @@
 const Post = require('./../models/posts');
+const Comment = require('./../models/comments');
 
 exports.createPost = (req, res) => {
     if (!req.body) {
@@ -30,9 +31,20 @@ exports.getOnePost = (req, res) => {
 
 
 
+
 };
+
+
+
+
 exports.removePost = (req, res) => {
-
-
-
+    Post.removePost(req.params.postId, (err, data) => {
+        if (err) {
+            if (err.kind === "Non trouvé !") {
+                res.status(404).json({ message: 'post not found with  ' + req.params.postId })
+            } else {
+                res.status(500).json({ message: 'no article with this id : ' + req.params.postId })
+            }
+        } else res.json({ message: 'Article supprimé avec succès !' })
+    })
 };

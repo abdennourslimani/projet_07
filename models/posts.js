@@ -21,7 +21,7 @@ Post.createPost = (newPost, callback) => {
             return;
         }
         console.log("Création de l'utilisateur : ", { id: res.insertId, ...newUser });
-        callback(null, { id: res.insertId, ...newUser });
+        callback(null, { id: res.insertId, ...newPost });
     });
 }
 
@@ -34,7 +34,7 @@ Post.getAllPosts = callback => {
             callback(err, null);
             return;
         }
-        callback(null, posts);
+        callback(null, res);
     });
 };
 
@@ -71,3 +71,6 @@ Post.getOnePost = (postId, callback) => {
     });
 
 };
+
+
+module.exports = Post;
