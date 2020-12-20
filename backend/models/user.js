@@ -7,7 +7,7 @@ const User = (user) => {
     this.email = user.email ? user.email : null;
     this.password = user.password ? user.password : null;
     this.createTime = user.createTime ? user.createTime : null;
-    this.isAdmin = user.isAdmin ? user.isAdmin : false;
+    //this.isAdmin = user.isAdmin ? user.isAdmin : false;
 }
 
 // CRÉATION D'UN NOUVEL UTILISATEUR
