@@ -2,9 +2,9 @@ const mySQLConnexion = require('../db/connexion');
 
 
 const Comment = (com) => {
-    this.id = com.id ? comment.id : null;
-    this.comment = com.comment ? com.title : null;
-    this.Posts_id = com.Posts_id ? com.Posts_id : null;
+    this.id = com.id ? com.id : null;
+    this.comment = com.comment ? com.comment : null;
+    this.post_id = com.post_id ? com.post_id : null;
     this.publish_date = com.publish_date ? com.publish_date : null;
     this.author_id = com.author_id ? com.author_id : false;
 
@@ -14,7 +14,7 @@ const Comment = (com) => {
 
 
 Comment.createComment = (newComment, callback) => {
-    mySQLConnexion.query(`INSERT INTO Comments ( comment, author_id,Posts_id) VALUES ("${newComment.comment}","${newComment.author_id}",'${newComment.Posts_id}')`, (err, res) => {
+    mySQLConnexion.query(`INSERT INTO Comments ( comment, author_id,post_id) VALUES ("${newComment.comment}","${newComment.author_id}",'${newComment.post_id}')`, (err, res) => {
         if (err) {
             callback(err, null);
             console.log("there is an error when you try to create comment: ", err);

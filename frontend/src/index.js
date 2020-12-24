@@ -14,7 +14,7 @@ function App () {
   const [password, setPassword] = useState("");
 
 
-  const [loginStatus, setLoginstatus] = useState("");
+  //const [loginStatus, setLoginstatus] = useState("");
 
   
   const register = () =>{
@@ -33,12 +33,7 @@ function App () {
         email : email, 
         password : password
     }).then((response) => {
-
-      if(response.data.message){
-        setLoginstatus(response.data.message)
-
-      }else
-      setLoginstatus(response.data[0].username)
+          console.log(response)
     });
   }
 

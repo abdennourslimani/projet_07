@@ -2,11 +2,12 @@ const mySQLConnexion = require('../db/connexion');
 
 
 const Post = (post) => {
-    this.id = post.id ? user.id : null;
+    this.id = post.id ? post.id : null;
     this.title = post.title ? post.title : null;
-    this.content = post.content ? ost.content : null;
+    this.content = post.content ? post.content : null;
     this.publish_date = post.publish_date ? post.publish_date : null;
     this.author_id = post.author_id ? post.author_id : false;
+    this.comments = post.comments ? post.comments : []
 
 }
 

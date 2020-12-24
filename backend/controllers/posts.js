@@ -30,10 +30,16 @@ exports.getAllPosts = (req, res) => {
                     res.status(500).send({ message: 'no comments found!' + err });
                 } else {
                     comments.forEach(com => {
+                        console.log('je suis com' + com);
+                        let post = posts.find(elt => elt.id === com.post_id)
+                        if (post !== undefined && post.comments !== undefined && post.comments.length > 0) {
+                            post.comments.push(com);
+                        } else {
+                            post.comments = [com];
+                        }
 
-                        // à rajouter push comments to posts
                     })
-                    res.send(articles)
+                    res.send(posts)
                 }
             })
         }
@@ -47,23 +53,22 @@ exports.getOnePost = (req, res) => {
         if (err) {
             res.status(500).send({ message: 'no post found!' + err });
         } else {
-            Commentaire.getAllComments((err, comments) => {
+            Comment.getAllComments((err, comments) => {
                 if (err) {
-                    res.status(500).send({ message: 'On a rien trouvé !' + err });
+                    res.status(500).send({ message: 'no comments' + err });
+                } else {
+                    comments.forEach(com => {
+                        let post = posts[0]
+                        if (post.id === com.post_id) {
+                            post.comments = [com]
+                        }
+                    })
+                    res.send(posts)
                 }
-
-                // à rajouter push comments to posts
-
-                res.send(posts)
             })
         }
     })
-
-
-
-
 };
-
 
 
 

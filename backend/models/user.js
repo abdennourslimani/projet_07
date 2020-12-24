@@ -33,7 +33,7 @@ User.findByEmail = (email, callback) => {
             return;
         }
         if (res.length) {
-            console.log('custumor found : ', res[0])
+            console.log('customer found : ', res[0])
             callback(null, res[0]);
             return;
         }
