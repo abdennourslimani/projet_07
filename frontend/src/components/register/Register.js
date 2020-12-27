@@ -1,6 +1,8 @@
 import React,{Component} from 'react';
 import { Formik , Field,ErrorMessage} from 'formik';
 import * as Yup from 'yup';
+import * as axios from 'axios';
+
 import CustomInput from '../utils/CustomInupt'
 import CustomError from '../utils/CustomError'
 
@@ -32,6 +34,10 @@ export default class Register extends Component {
         console.log({values,actions})
         actions.setSubmitting(false)
         actions.resetForm();
+        axios.post('http://localhost:3000/api/auth/signup',values).then(Response =>{
+            console.log(Response)
+        })
+
 
     }
          userSchema = Yup.object().shape({

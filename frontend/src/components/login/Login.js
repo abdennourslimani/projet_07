@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import { Formik , Field,ErrorMessage} from 'formik';
 import CustomInput from '../utils/CustomInupt'
 import CustomError from '../utils/CustomError'
-
+import * as axios from 'axios';
 import * as Yup from 'yup';
 
 /*
@@ -30,9 +30,13 @@ export default class Register extends Component {
         console.log({actions})
         actions.setSubmitting(false)
         actions.resetForm();
+        axios.post('http://localhost:3000/api/auth/login',values)
+                        .then(Response =>{
+                        console.log(Response)
+      })
 
     }
-         userSchema = Yup.object().shape({
+    userSchema = Yup.object().shape({
                     email: Yup.string().email("L'email doit être valide").required('Required'),
                     password: Yup.string().min(5, 'Trop court').required('required')
       });
