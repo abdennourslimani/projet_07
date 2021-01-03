@@ -4,7 +4,6 @@ import CustomInput from '../utils/CustomInupt'
 import CustomError from '../utils/CustomError'
 import * as axios from 'axios';
 import * as Yup from 'yup';
-
 /*
 const CustomInput =({field , form:{touched,errors} , ...props}) =>{
         return(
@@ -25,14 +24,18 @@ const CustomInput =({field , form:{touched,errors} , ...props}) =>{
 }
 */
 
-export default class Register extends Component {
+
+
+export default class Login extends Component {
     submit =(values,actions) =>{
-        console.log({actions})
+        //console.log({values ,actions})
         actions.setSubmitting(false)
         actions.resetForm();
         axios.post('http://localhost:3000/api/auth/login',values)
                         .then(Response =>{
-                        console.log(Response)
+                          const token =Response.data.token ;
+                          localStorage.setItem('Token',token)
+                       
       })
 
     }
@@ -54,7 +57,7 @@ export default class Register extends Component {
 
   render() {
     return (
-        <div className="container-fluid p-5 bg-light d-flex flex-column justify-content-center align-items-center">
+        <div className="container-fluid p-5  d-flex flex-column justify-content-center align-items-center">
             <Formik 
             onSubmit={this.submit}
             initialValues={{ email: '', password: ''}}

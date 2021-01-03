@@ -60,7 +60,7 @@ export default class Register extends Component {
 
   render() {
     return (
-        <div className="container-fluid p-5 bg-light d-flex flex-column justify-content-center align-items-center">
+        <div className="container-fluid p-5 d-flex flex-column justify-content-center align-items-center">
             <Formik 
             onSubmit={this.submit}
             initialValues={{ name :'',surname:'',email: '', password: ''}}
