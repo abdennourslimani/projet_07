@@ -1,7 +1,8 @@
 import React,{Component } from 'react';
-import { Header, Login,Register,PostList,PostDetails} from './components'
+import { Header, Login,Register} from './components'
 import {BrowserRouter as Router,Route ,Redirect,Switch} from 'react-router-dom'
 import apiPost  from './conf/axios.post';
+import Films from'./features/posts'
 
 import './index.css'
 
@@ -76,15 +77,12 @@ class App extends Component {
                             <Redirect to="/login" />
                         </Switch>
                         <Header/>
-                        { this.state.loaded ? (
-                            <div >
-                        <PostList posts={this.state.posts} updateSelectedPost={this.updateSelectedPost}/>
-                        <PostDetails post={this.state.posts[this.state.selectedPost]} />
-                          </div>
-                        ):( 
-                            <h1>pas de donnée</h1>
-                        )}
-
+                        <Films
+                        loaded={this.state.loaded}
+                        posts={this.state.posts}
+                        updateSelectedPost={this.updateSelectedPost}
+                        selectedPost={this.state.selectedPost}               
+                        />
                  </div>
       </Router>
            
