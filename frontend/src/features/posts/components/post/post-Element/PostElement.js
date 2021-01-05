@@ -1,31 +1,7 @@
 import React, { Component } from 'react';
+import Styles from'./postElement.module.css';
 
 
-
-
-const style = {
-    width: '50%',
-    height: '50%',
-    overflow: 'hidden',
-    padding: '10px',
-    'margin-left':'10px',
-    cursor: 'pointer',
-    border : '1px solid black',
-  }
-  const style1= {
-    width: '70%',
-    height: '50%',
-    'text-align':'center',
-
-  
-  }
-
-  const style2= {
-    width: '50%',
-    height: '80%',
-    'text-align':'center'
-   
-  }
   export default class PostElement extends Component {
   
     onClickPost = (index) => {
@@ -36,21 +12,27 @@ const style = {
     render() {
       
         const comment = this.props.comment.map(function(comment, idx) {
-            return <p key={idx} className="w-100">{comment.comment}</p>;
+            return ([
+              <div className={Styles.comments}>
+                 <p key={comment.id} >{comment.comment}</p>
+                <span key={comment.id} >published:{comment.publish_date}</span>
+            </div>
+            ]);
         });
 
       return (
-        <div   style={style}>
-          <div style={style2}>
-            <h5>{this.props.post.title}</h5>
-             <p>{this.props.post.content}</p>
-            <hr className="w-100" />
-            <div style={style1}>   {comment}  </div>
+          <div className={Styles.container}>
+              <div className={Styles.posts}>
+                  <h5>{this.props.post.title}</h5>
+                  <p>{this.props.post.content}</p>
+                  <button type="button" class="btn btn-dark" onClick={this.onClickPost} > En savoir plus</button>
+              </div>
+              <hr className="w-100"></hr>
+              <span className={Styles.titlecomment}>Comments : </span> 
+                  {comment} 
            
 
           </div>
-          <button onClick={this.onClickPost} className="btn btn-primary m-3"> en savoir plus</button>
-        </div>
       );
   
     }

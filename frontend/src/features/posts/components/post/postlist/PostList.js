@@ -1,22 +1,15 @@
 import React, { Component } from 'react';
 import PostElement from '../post-Element/PostElement';
+import Styles from'./postlist.module.css';
 
 export default class PostList extends Component {
 
   render() {
 
-    const style = {
-      'display':'flex',
-      'justify-content':'space-around',
-      'margin':'20px 15px 0px 0px',
-      'height':'100vh',
-       'width':'65%',
-     }
-     
-   
+    
 
     return (
-      <div style={style}>
+      <div className={Styles.container} >
         {this.props.posts.map((p, index) => (
           <PostElement 
           key={p.id} 

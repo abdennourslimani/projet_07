@@ -1,0 +1,56 @@
+.container {
+    background-color: #212529;
+    display: flex;
+    justify-content: space-evenly;
+    height: 6rem;
+    align-items: center;
+    border-bottom: 10px solid #FFCC66;
+}
+
+.flex_right {
+    display: flex;
+    margin-right: 1rem;
+}
+
+.flex_right a {
+    color: #e9ecef;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.flex_right a:hover {
+    color: #FFCC66;
+    text-decoration: underline;
+    text-align: center;
+}
+
+.flex_right a:focus {
+    background-color: #FFCC66;
+    color: #18020C;
+    font-weight: bold;
+    border-radius: 10rem;
+}
+
+.flex_left {
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+    color: #e9ecef;
+}
+
+.flex_left:hover {
+    text-decoration: none;
+    color: #FFCC66;
+}
+
+
+/*dee2e6*/
+
+
+/*
+font-family: 'Dancing Script', cursive;
+font-family: 'Open Sans', sans-serif;
+font-family: 'Redressed', cursive
+
+
+*/

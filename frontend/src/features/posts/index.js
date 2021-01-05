@@ -1,15 +1,9 @@
 import React from 'react';
-
+import Styles from'./index.module.css';
 
 import { PostList, PostDetails } from './components';
 
-const style = {
-   'display':'flex',
-   'justify-content':'space-between',
-   'margin':'20px 20px 0px 0px',
-   'height':'100vh',
 
-  }
   
 
 
@@ -18,7 +12,7 @@ function Posts (props){
     return(
     <>    
     { props.loaded ? (
-        <div  style={style}>
+        <div  className={Styles.container}>
             <PostList posts={props.posts} updateSelectedPost={props.updateSelectedPost}/>
             <PostDetails post={props.posts[props.selectedPost]} />
       </div>

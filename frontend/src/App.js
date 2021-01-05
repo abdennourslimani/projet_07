@@ -22,6 +22,21 @@ class App extends Component {
         }
     }
 
+
+/*  /*  
+comments: 
+1: {id: 15, publish_date: "2021-01-02T16:31:25.000Z", comment: "je suis le 2 comment du 1 post", author_id: 1, post_id: 9}
+2: {id: 11, publish_date: "2021-01-02T16:28:05.000Z", comment: "comment du 1 post", author_id: 1, post_id: 9}
+post:
+__proto__: Array(0)
+content: "je suis le contenu du 1 post"
+id: 9
+name: "slimani"
+publish_date: "2021-01-02T16:26:03.000Z"
+surname: "abdnenour"
+title: "titre 1 post"
+*/
+
     componentDidMount(){
                 apiPost.get('/getAll')
         
@@ -31,9 +46,14 @@ class App extends Component {
                                                     id: post.id,            
                                                     title: post.title,
                                                     content: post.content,
+                                                    name:`${post.name} ${post.surname}`,
+                                                    publish_date:post.publish_date,
+
                                                     comments: post.comments.map((com=>{
                                                         return {
-                                                                comment :com.comment  ,                   
+                                                                id:com.id,
+                                                                comment :com.comment  ,   
+                                                                publish_date:com.publish_date                
                                                         }
                                                             
                                                         

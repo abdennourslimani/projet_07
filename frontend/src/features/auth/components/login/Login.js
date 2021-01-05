@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import { Formik , Field,ErrorMessage} from 'formik';
+import Styles from'./login.module.css'
 
 import CustomInput from '../../../../components/utils/CustomInupt'
 import CustomError from '../../../../components/utils/CustomError'
@@ -36,7 +37,8 @@ export default class Login extends Component {
         axios.post('http://localhost:3000/api/auth/login',values)
                         .then(Response =>{
                           const token =Response.data.token ;
-                          localStorage.setItem('Token',token)
+                          localStorage.setItem('Token',token);
+                          window.location='/posts'
                        
       })
 
@@ -82,7 +84,7 @@ export default class Login extends Component {
                 <Field  name ="password"  type ="password" label ="password" component ={CustomInput}/>
                 <ErrorMessage name="password" component = {CustomError}/>
               
-                <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
+                <button type="submit" className="btn " disabled={isSubmitting}>
                         Envoyer
                 </button>
           </form>
