@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
-
+import Styles from './postDetails.module.css'
 export default class PostDetails extends Component {
 
   render() {
     return (
-      <div className=" border p-4 d-flex flex-column">
-          <h1>{this.props.post.content}</h1>
-          <hr className="w-100" />
-
-      
+      <div className={Styles.container}>
+        <em>Detail :</em>
+        <div className={Styles.postDetail}>
+            <p>{this.props.post.title}</p>
+            <p>{this.props.post.content}</p>
+            <span>écrit par:{this.props.post.name}</span>
+          </div> 
       </div>
     );
   }

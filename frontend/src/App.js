@@ -37,40 +37,45 @@ surname: "abdnenour"
 title: "titre 1 post"
 */
 
-    componentDidMount(){
-                apiPost.get('/getAll')
+componentDidMount(){
+    apiPost.get('/getAll')
+
+            .then(response => response.data)
+            .then(postApi=> {   
+                const posts=postApi.map(post=>{
+                        return{
+                            id: post.id,            
+                            title: post.title,
+                            content: post.content,
+                            name:`${post.name} ${post.surname}`,
+                            publish_date:post.publish_date,
+                            comments:post.comments.map(comment=>{
+                                return {
+                                    comment : comment.comment,
+                                    publish_date:comment.publish_date,
+                                }
         
-                                .then(response => response.data)
-                                .then(postApi=> {                                  
-                                    const posts = postApi.map(post =>({
-                                                    id: post.id,            
-                                                    title: post.title,
-                                                    content: post.content,
-                                                    name:`${post.name} ${post.surname}`,
-                                                    publish_date:post.publish_date,
-
-                                                    comments: post.comments.map((com=>{
-                                                        return {
-                                                                id:com.id,
-                                                                comment :com.comment  ,   
-                                                                publish_date:com.publish_date                
-                                                        }
-                                                            
-                                                        
-                                                               
-                                        }))
+        
+                            }),   
                                         
-                                    }));
-                                     this.updatePosts(posts)
+                        }
+                })
+                this.updatePosts(posts)
+                //({}) dire que tu veux retourner obj  
+                console.log(posts) 
+                      
+            })
 
-                                        console.log(posts)
+            .catch(err => console.log(err))
+}
 
-                                    //({}) dire que tu veux retourner obj
-                                   
-                                })
 
-                                .catch(err => console.log(err))
-    }
+
+
+
+
+
+
 
     updatePosts = posts =>{
         this.setState({

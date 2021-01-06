@@ -1,0 +1,39 @@
+.container {
+    background-color: #18191a;
+    width: 35%;
+    color: #e9ecef;
+}
+
+.postDetail {
+    border-radius: 2rem;
+    box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.7);
+    padding: 2rem;
+    background-color: #242526;
+    margin-top: 4rem;
+    margin-right: 3rem;
+}
+
+.container em {
+    position: relative;
+    top: 3rem;
+    left: 11rem;
+}
+
+.postDetail p {
+    text-align: justify;
+}
+
+.postDetail span {
+    font-size: 12px;
+    position: relative;
+    top: -23rem;
+    left: 23rem;
+}
+
+
+/*
+#18191a         ;noir 1 
+#e9ecef         ;blanc
+#FFCC66         ;jaune
+#212529         ;noir 2 
+*/

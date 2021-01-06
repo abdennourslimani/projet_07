@@ -11,11 +11,11 @@ import Styles from'./postElement.module.css';
   
     render() {
       
-        const comment = this.props.comment.map(function(comment, idx) {
+        const comment = this.props.comment.map(function(com, idx) {
             return ([
               <div className={Styles.comments}>
-                 <p key={comment.id} >{comment.comment}</p>
-                <span key={comment.id} >published:{comment.publish_date}</span>
+                 <p key={com.id} >{com.comment}</p>
+                <span key={com.id} >published:{com.publish_date}</span>
             </div>
             ]);
         });
@@ -25,12 +25,10 @@ import Styles from'./postElement.module.css';
               <div className={Styles.posts}>
                   <h5>{this.props.post.title}</h5>
                   <p>{this.props.post.content}</p>
-                  <button type="button" class="btn btn-dark" onClick={this.onClickPost} > En savoir plus</button>
+                  <button type="button" className="btn btn-dark" onClick={this.onClickPost} > En savoir plus</button>
               </div>
-              <hr className="w-100"></hr>
               <span className={Styles.titlecomment}>Comments : </span> 
-                  {comment} 
-           
+                {comment}
 
           </div>
       );
