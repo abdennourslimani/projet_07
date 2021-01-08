@@ -20,6 +20,8 @@
 
 .form input {}
 
+.form div {}
+
 .form span {
     display: flex;
     justify-content: center;

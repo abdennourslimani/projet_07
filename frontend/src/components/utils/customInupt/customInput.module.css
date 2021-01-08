@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+    align-items: baseline;
+    padding-top: 2px;
+}
+
+.container label {
+    color: #e9ecef;
+    width: 10%;
+    font-size: 12px;
+    text-align: left;
+}
+
+.container input {
+    width: 90%;
+    border-radius: 10rem;
+    padding: 0.3rem;
+    background-color: #242526;
+    color: #e9ecef;
+    border: 1px solid #FFCC66;
+    margin-bottom: 10px;
+}

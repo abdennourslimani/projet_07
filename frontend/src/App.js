@@ -23,19 +23,7 @@ class App extends Component {
     }
 
 
-/*  /*  
-comments: 
-1: {id: 15, publish_date: "2021-01-02T16:31:25.000Z", comment: "je suis le 2 comment du 1 post", author_id: 1, post_id: 9}
-2: {id: 11, publish_date: "2021-01-02T16:28:05.000Z", comment: "comment du 1 post", author_id: 1, post_id: 9}
-post:
-__proto__: Array(0)
-content: "je suis le contenu du 1 post"
-id: 9
-name: "slimani"
-publish_date: "2021-01-02T16:26:03.000Z"
-surname: "abdnenour"
-title: "titre 1 post"
-*/
+
 
 componentDidMount(){
     apiPost.get('/getAll')
@@ -44,6 +32,7 @@ componentDidMount(){
             .then(postApi=> {   
                 const posts=postApi.map(post=>{
                         return{
+                            author_id:post.author_id,
                             id: post.id,            
                             title: post.title,
                             content: post.content,
@@ -62,7 +51,6 @@ componentDidMount(){
                 })
                 this.updatePosts(posts)
                 //({}) dire que tu veux retourner obj  
-                console.log(posts) 
                       
             })
 
@@ -108,7 +96,8 @@ componentDidMount(){
                                     loaded={this.state.loaded}
                                     posts={this.state.posts}
                                     updateSelectedPost={this.updateSelectedPost}
-                                    selectedPost={this.state.selectedPost}               
+                                    selectedPost={this.state.selectedPost} 
+                                    updatePosts={this.updatePosts}              
                                     />
                                 )
                             }} />

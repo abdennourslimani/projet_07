@@ -1,8 +1,10 @@
 import React from 'react';
+import Styles from'./customError.module.css';
+
  const CustomError = (props) =>{
     console.log(props)
     return(
-        <div >{props.children}</div>
+        <div className={Styles.container}>{props.children}</div>
 
     )
 

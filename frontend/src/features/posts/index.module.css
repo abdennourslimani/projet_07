@@ -1,4 +1,5 @@
 .container {
     display: flex;
     justify-content: space-between;
+    background-color: #18191a;
 }

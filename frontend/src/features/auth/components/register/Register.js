@@ -2,10 +2,11 @@ import React,{Component} from 'react';
 import { Formik , Field,ErrorMessage} from 'formik';
 import * as Yup from 'yup';
 import * as axios from 'axios';
+import Styles from './register.module.css'
 
 
-import CustomInput from '../../../../components/utils/CustomInupt'
-import CustomError from '../../../../components/utils/CustomError'
+import CustomInput from '../../../../components/utils/customInupt/CustomInupt'
+import CustomError from '../../../../components/utils/customError/CustomError'
 
 
 
@@ -62,7 +63,7 @@ export default class Register extends Component {
 
   render() {
     return (
-        <div className="container-fluid p-5 d-flex flex-column justify-content-center align-items-center">
+        <div className={Styles.container}>
             <Formik 
             onSubmit={this.submit}
             initialValues={{ name :'',surname:'',email: '', password: ''}}
@@ -79,20 +80,21 @@ export default class Register extends Component {
                  errors,
                  touched
         }) => ( 
-            <form onSubmit={ handleSubmit } className="bg-white border p-5 d-flex flex-column">
-                <Field  name ="name" label ="name" component ={CustomInput}/>
+            <form onSubmit={ handleSubmit } className={Styles.form}>
+                <span>Register</span>
+                <Field  name ="name" label ="name" placeholder="Ex : zizou" component ={CustomInput}/>
                 <ErrorMessage name="name" component = {CustomError}/>                  
                 
-                 <Field  name ="surname" label ="surname" component ={CustomInput}/>
+                 <Field  name ="surname" label ="surname" placeholder="Ex :salomon" component ={CustomInput}/>
                  <ErrorMessage name="surname" component = {CustomError}/>                  
                
-                <Field  name ="email" type="email" label ="email" component ={CustomInput}/>
+                <Field  name ="email" type="email" placeholder="Ex : abc@msn.fr" label ="email" component ={CustomInput}/>
                 <ErrorMessage name="email" component = {CustomError}/>                        
                
-                <Field  name ="password"  type ="password" label ="password" component ={CustomInput}/>
+                <Field  name ="password"  type ="password" label ="password" placeholder="choose a password" component ={CustomInput}/>
                 <ErrorMessage name="password" component = {CustomError}/>
               
-                <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
+                <button type="submit" className="btn btn-dark" disabled={isSubmitting}>
                         Envoyer
                 </button>
           </form>
