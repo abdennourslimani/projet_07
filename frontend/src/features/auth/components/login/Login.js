@@ -36,9 +36,11 @@ export default class Login extends Component {
         actions.resetForm();
         axios.post('http://localhost:3000/api/auth/login',values)
                         .then(Response =>{
-                          const token =Response.data.token ;
-                          localStorage.setItem('Token',token);
-                          window.location='/posts'
+                            const token =Response.data.token ;
+                            const userId =Response.data.userId ;
+                            localStorage.setItem('Token',token);
+                            localStorage.setItem('userId',userId);
+                         // window.location='/posts'
                        
       })
 

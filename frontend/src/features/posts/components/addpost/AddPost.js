@@ -5,22 +5,34 @@ import Styles from './addpost.module.css'
 import CustomInput from '../../../../components/utils/customInupt/CustomInupt'
 import CustomError from '../../../../components/utils/customError/CustomError'
 
+
 import apiPost  from './../../../../conf/axios.post';
 import * as Yup from 'yup';
 
 export default class AddPost extends Component {
 
+   submit = (values,actions) => {
+        console.log(values)
+        actions.setSubmitting(false);
+        actions.resetForm();
+        const data = new FormData()
+        data.append('title', values.title)
+        data.append('image', values.image)
+        data.append('content', values.content)
 
-    submit =(values,actions) =>{
-        apiPost.post('/add',values)
-        .then(Response=>{
-            console.log(Response)
+
+       apiPost.post("/add", data, {
         })
-    
+        .then(res => {
+            console.log(res)
+        }) 
+           
+        };
 
-    }
+   
+
     userSchema = Yup.object().shape({
-                    title: Yup.string().min(2,'trop court comme titre').required('Required'),
+                    title: Yup.string().required('required'),
                     content: Yup.string().min(5, 'Trop court').required('required'),
       });
 
@@ -29,9 +41,9 @@ export default class AddPost extends Component {
   render() {
     return (
         <div className="container-fluid p-5  d-flex flex-column justify-content-center align-items-center" >
-            <Formik 
+           <Formik 
             onSubmit={this.submit}
-            initialValues={{ title: '', content: ''}}
+            initialValues={{ title: '', content: '',image:''}}
             validationSchema={this.userSchema}
             validateOnChange ={false} 
             //validate={this.validate}
@@ -42,22 +54,25 @@ export default class AddPost extends Component {
                  handleSubmit,
                  isSubmitting,
                  errors,
-                 touched
+                 touched,
+                 setFieldValue
         }) => ( 
             <form onSubmit={ handleSubmit } className={Styles.container}> 
                 <span>Add your article</span>                                     
-                <Field  name ="Title" type="text" label ="Title" placeholder='title' component ={CustomInput}/>
-                <ErrorMessage name="title" component = {CustomError}/>   
+                <Field  name ="title" type="text"  placeholder='title' component ={CustomInput}/>
+                <ErrorMessage name="title" component = {CustomError}/>    
+
+
                 <div className={Styles.uploadImage}>
-                    <Field  name ="Image" type="file" label ="Image" placeholder="content" component ={CustomInput}/>
-                    <button className="btn " type="submit">Upload</button>
-                </div>                     
+                    <input  id="image" name ="image" type="file"  placeholder="content" onChange={(event) => {setFieldValue("image", event.currentTarget.files[0] ) }}/>
+                </div>                    
                
-                <Field  name ="Content"  type ="text" label ="Content" placeholder="content" component ={CustomInput}/>
+
+               
+                <Field  name ="content"  type ="text"  placeholder="content" component ={CustomInput}/>
                 <ErrorMessage name="password" component = {CustomError}/>
                 
-              
-                <button type="submit" className="btn btn-dark"  disabled={isSubmitting}>
+                <button type="submit" className="btn btn-dark" disabled={isSubmitting}>
                         Envoyer
                 </button>
           </form>
@@ -71,3 +86,5 @@ export default class AddPost extends Component {
   }
 
 }
+
+

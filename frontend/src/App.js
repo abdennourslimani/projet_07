@@ -38,6 +38,7 @@ componentDidMount(){
                             content: post.content,
                             name:`${post.name} ${post.surname}`,
                             publish_date:post.publish_date,
+                            image_url:post.image_url,
                             comments:post.comments.map(comment=>{
                                 return {
                                     comment : comment.comment,
@@ -51,7 +52,7 @@ componentDidMount(){
                 })
                 this.updatePosts(posts)
                 //({}) dire que tu veux retourner obj  
-                      
+                console.log(posts)                      
             })
 
             .catch(err => console.log(err))

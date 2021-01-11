@@ -24,6 +24,7 @@ import Styles from'./postElement.module.css';
           <div className={Styles.container}>
               <div className={Styles.posts}>
                   <h5>{this.props.post.title}</h5>
+                  <img src={this.props.post.image_url} alt="name"/>
                   <p>{this.props.post.content}</p>
                   <button type="button" className="btn btn-dark" onClick={this.onClickPost} > En savoir plus</button>
               </div>
