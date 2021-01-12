@@ -24,8 +24,8 @@ export default class AddPost extends Component {
        apiPost.post("/add", data, {
         })
         .then(res => {
-            console.log(res)
-        }) 
+            this.props.addPost(res.data)
+            }) 
            
         };
 
@@ -36,11 +36,12 @@ export default class AddPost extends Component {
                     content: Yup.string().min(5, 'Trop court').required('required'),
       });
 
+      AddPost
   
 
   render() {
     return (
-        <div className="container-fluid p-5  d-flex flex-column justify-content-center align-items-center" >
+        <div >
            <Formik 
             onSubmit={this.submit}
             initialValues={{ title: '', content: '',image:''}}
@@ -72,7 +73,7 @@ export default class AddPost extends Component {
                 <Field  name ="content"  type ="text"  placeholder="content" component ={CustomInput}/>
                 <ErrorMessage name="password" component = {CustomError}/>
                 
-                <button type="submit" className="btn btn-dark" disabled={isSubmitting}>
+                <button type="submit" className="btn btn-dark"  disabled={isSubmitting}>
                         Envoyer
                 </button>
           </form>

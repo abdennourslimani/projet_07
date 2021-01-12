@@ -40,7 +40,7 @@ export default class Login extends Component {
                             const userId =Response.data.userId ;
                             localStorage.setItem('Token',token);
                             localStorage.setItem('userId',userId);
-                         // window.location='/posts'
+                             window.location='/posts'
                        
       })
 

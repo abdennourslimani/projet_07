@@ -52,7 +52,7 @@ componentDidMount(){
                 })
                 this.updatePosts(posts)
                 //({}) dire que tu veux retourner obj  
-                console.log(posts)                      
+            //console.log(posts)                      
             })
 
             .catch(err => console.log(err))
@@ -60,11 +60,22 @@ componentDidMount(){
 
 
 
+addPost = post => {
+    const posts = this.state.posts.slice();
+    posts.push(post);
+    this.setState({
+    posts
+});
+}
 
+removePost = index => {
+    const posts = this.state.posts.slice();
+    posts.splice(index, 1);
+    this.setState({
+        posts
+});
 
-
-
-
+}
 
     updatePosts = posts =>{
         this.setState({
@@ -98,7 +109,9 @@ componentDidMount(){
                                     posts={this.state.posts}
                                     updateSelectedPost={this.updateSelectedPost}
                                     selectedPost={this.state.selectedPost} 
-                                    updatePosts={this.updatePosts}              
+                                    updatePosts={this.updatePosts}   
+                                    addPost={this.addPost} 
+                                    removePost={this.removePost}           
                                     />
                                 )
                             }} />

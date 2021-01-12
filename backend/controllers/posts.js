@@ -3,7 +3,7 @@ const Comment = require('./../models/comments');
 
 exports.createPost = (req, res) => {
     if (!req.body) {
-        res.status(400).json({ message: "content can 't be empty !" })
+        res.status(500).json({ message: "content can 't be empty !" })
     }
     const post = new Post({
         "title": req.body.title,

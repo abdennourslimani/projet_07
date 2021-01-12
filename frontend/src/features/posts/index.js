@@ -13,11 +13,11 @@ function Posts (props){
     <>    
     { props.loaded ? (
         <div  className={Styles.container}>
-            <div>
-                <AddPost updatePosts={props.updatePosts}/>
+            <div className={Styles.flex_left}>
+                <AddPost addPost={props.addPost}/>
                 <PostList posts={props.posts} updateSelectedPost={props.updateSelectedPost}/>
             </div>
-            <div>
+            <div className={Styles.flex_right}>
                 <PostDetails post={props.posts[props.selectedPost]} />
             </div>
       </div>

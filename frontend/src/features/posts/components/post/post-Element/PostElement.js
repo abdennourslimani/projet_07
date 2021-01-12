@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Styles from'./postElement.module.css';
+import AddComment from'./comments/AddComment';
+import RemovePost from'./removePost/RemovePost';
 
 
   export default class PostElement extends Component {
@@ -29,7 +31,10 @@ import Styles from'./postElement.module.css';
                   <button type="button" className="btn btn-dark" onClick={this.onClickPost} > En savoir plus</button>
               </div>
               <span className={Styles.titlecomment}>Comments : </span> 
+              <AddComment post={this.props.post}/>
+
                 {comment}
+                <RemovePost/>
 
           </div>
       );

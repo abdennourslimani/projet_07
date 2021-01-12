@@ -3,6 +3,7 @@
     display: flex;
     flex-direction: column;
     width: 50%;
+    margin: 6rem 0rem 2rem 18rem;
 }
 
 .container span {
@@ -12,8 +13,17 @@
 }
 
 .container button {
-    width: 30%;
-    margin: 0 auto;
+    margin-left: 18rem;
+    margin-top: 1rem;
+    width: 15%;
+    color: rgb(37, 27, 27);
+    font-weight: 900;
+}
+
+.container button:hover {
+    background-color: teal;
+    color: rgb(37, 27, 27);
+    font-weight: 900;
 }
 
 .uploadImage input {
@@ -21,7 +31,7 @@
     margin-bottom: 11px;
     height: 30px;
     border-radius: 10rem;
-    width: 87%;
+    width: 82%;
     font-weight: 700;
     background-color: #2f807f;
 }

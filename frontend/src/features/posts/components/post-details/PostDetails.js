@@ -8,6 +8,7 @@ export default class PostDetails extends Component {
         <em>Detail :</em>
         <div className={Styles.postDetail}>
             <p>{this.props.post.title}</p>
+            <img src={this.props.post.image_url} alt={this.props.post.title}/>
             <p>{this.props.post.content}</p>
             <span>écrit par:{this.props.post.name}</span>
           </div> 

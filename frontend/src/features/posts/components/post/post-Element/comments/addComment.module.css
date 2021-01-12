@@ -1,0 +1,17 @@
+.form button {
+    margin-bottom: 2rem;
+    background-color: #2f807f;
+    font-weight: 700;
+    color: rgb(37, 27, 27);
+    margin-left: 1rem;
+    padding: 0.3rem 0.7rem;
+}
+
+.form button:hover {
+    background-color: #2f807f;
+    color: rgb(37, 27, 27);
+}
+
+.form input:nth-child(2) {
+    display: none;
+}
