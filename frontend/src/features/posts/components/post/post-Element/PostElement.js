@@ -4,6 +4,8 @@ import AddComment from'./comments/AddComment';
 import RemovePost from'./removePost/RemovePost';
 
 
+
+
   export default class PostElement extends Component {
   
     onClickPost = (index) => {
@@ -23,6 +25,7 @@ import RemovePost from'./removePost/RemovePost';
         });
 
       return (
+        <>   
           <div className={Styles.container}>
               <div className={Styles.posts}>
                   <h5>{this.props.post.title}</h5>
@@ -31,12 +34,13 @@ import RemovePost from'./removePost/RemovePost';
                   <button type="button" className="btn btn-dark" onClick={this.onClickPost} > En savoir plus</button>
               </div>
               <span className={Styles.titlecomment}>Comments : </span> 
-              <AddComment post={this.props.post}/>
-
+              <AddComment addPost={this.props.addPost} post={this.props.post}/>
                 {comment}
-                <RemovePost/>
+                <RemovePost  post={this.props.post} removePost={this.props.removePost} /> 
+
 
           </div>
+          </>   
       );
   
     }

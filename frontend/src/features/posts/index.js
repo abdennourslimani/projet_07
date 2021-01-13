@@ -15,7 +15,7 @@ function Posts (props){
         <div  className={Styles.container}>
             <div className={Styles.flex_left}>
                 <AddPost addPost={props.addPost}/>
-                <PostList posts={props.posts} updateSelectedPost={props.updateSelectedPost}/>
+                <PostList addPost={props.addPost} posts={props.posts} removePost={props.removePost} updateSelectedPost={props.updateSelectedPost}/>
             </div>
             <div className={Styles.flex_right}>
                 <PostDetails post={props.posts[props.selectedPost]} />

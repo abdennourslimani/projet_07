@@ -77,9 +77,9 @@ exports.removePost = (req, res) => {
     Post.removePost(req.params.postId, (err, data) => {
         if (err) {
             if (err.kind === "Non trouvé !") {
-                res.status(404).json({ message: 'post not found with  ' + req.params.postId })
+                return res.status(404).json({ message: 'post not found with  ' + req.params.postId + err })
             } else {
-                res.status(500).json({ message: 'no article with this id : ' + req.params.postId })
+                return res.status(500).json({ message: 'no article with this id : ' + req.params.postId + err })
             }
         } else res.json({ message: 'Article supprimé avec succès !' })
     })

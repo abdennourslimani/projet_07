@@ -21,11 +21,11 @@ export default class AddPost extends Component {
         data.append('content', values.content)
 
 
-       apiPost.post("/add", data, {
-        })
-        .then(res => {
-            this.props.addPost(res.data)
-            }) 
+        apiPost.post("/add", data, {
+            })
+            .then(res => {
+                this.props.addPost(res.data)
+                }) 
            
         };
 
@@ -36,7 +36,6 @@ export default class AddPost extends Component {
                     content: Yup.string().min(5, 'Trop court').required('required'),
       });
 
-      AddPost
   
 
   render() {

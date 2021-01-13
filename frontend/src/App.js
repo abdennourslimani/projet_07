@@ -52,7 +52,7 @@ componentDidMount(){
                 })
                 this.updatePosts(posts)
                 //({}) dire que tu veux retourner obj  
-            //console.log(posts)                      
+            console.log(posts)                      
             })
 
             .catch(err => console.log(err))
@@ -69,10 +69,10 @@ addPost = post => {
 }
 
 removePost = index => {
-    const posts = this.state.posts.slice();
+    const posts = [...this.state.posts];    //this.state.posts.slice();
     posts.splice(index, 1);
     this.setState({
-        posts
+        posts,
 });
 
 }
@@ -97,10 +97,19 @@ removePost = index => {
     return (
     <Router>
                 <div className="App">
-                         <Header/>
+                         <Header isloggedIn={this.state.isloggedIn}/>
                         <Switch>
                             <Route path="/signup" component ={Register}></Route>
-                            <Route path="/login"  component ={Login} ></Route>
+                            <Route path="/login"  render={ (props) => {
+                            return (
+                                    <Login
+                                    { ...props } 
+                                    loaded={this.state.loaded}
+                                    posts={this.state.posts}
+                                    isloggedIn={this.state.isloggedIn}
+                                    />
+                                )
+                            }} />
                             <Route path="/posts" render={ (props) => {
                             return (
                                     <Posts

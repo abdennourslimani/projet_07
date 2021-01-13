@@ -7,25 +7,6 @@ import CustomError from '../../../../components/utils/customError/CustomError'
 
 import * as axios from 'axios';
 import * as Yup from 'yup';
-/*
-const CustomInput =({field , form:{touched,errors} , ...props}) =>{
-        return(
-            <div className="form-group">
-                    <label>{field.name}</label>  
-                    <input type="text"  className="form-control" {...props} { ...field} />    
-            </div>
-  )
-}
-*/
-/*const CustomError = (props) =>{
-    console.log(props)
-    return(
-        <div className="text-danger ">{props.children}</div>
-
-    )
-
-}
-*/
 
 
 
@@ -36,11 +17,12 @@ export default class Login extends Component {
         actions.resetForm();
         axios.post('http://localhost:3000/api/auth/login',values)
                         .then(Response =>{
+                            console.log(Response.data)
                             const token =Response.data.token ;
                             const userId =Response.data.userId ;
                             localStorage.setItem('Token',token);
                             localStorage.setItem('userId',userId);
-                             window.location='/posts'
+                            // window.location='/posts'
                        
       })
 
@@ -88,7 +70,7 @@ export default class Login extends Component {
                 <ErrorMessage name="password"  component = {CustomError}/>
               
                 <button type="submit" className="btn btn-dark" disabled={isSubmitting}>
-                        Envoyer
+                        Connexion
                 </button>
           </form>
             )}

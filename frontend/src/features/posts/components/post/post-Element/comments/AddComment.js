@@ -16,9 +16,8 @@ export default class AddComment extends Component {
          actions.setSubmitting(false)
         actions.resetForm();
        apiComment.post('/add',values)
-                        .then(response =>{console.log(response)
-                            
-                                        
+                        .then(res =>{
+                         console.log(res)   
       })
 
     }

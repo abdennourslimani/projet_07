@@ -11,25 +11,7 @@ import CustomError from '../../../../components/utils/customError/CustomError'
 
 
 
-/*
-const CustomInput =({field , form:{touched,errors} , ...props}) =>{
-        return(
-            <div className="form-group">
-                    <label>{field.name}</label>  
-                    <input type="text"  className="form-control" {...props} { ...field} />    
-            </div>
-  )
-}
 
-const CustomError = (props) =>{
-    console.log(props)
-    return(
-        <div className="text-danger">{props.children}</div>
-
-    )
-
-}
-*/
 
 
 export default class Register extends Component {

@@ -44,13 +44,14 @@ Post.getAllPosts = callback => {
 // delete a post by id 
 
 Post.removePost = (id, callback) => {
-    mySQLConnexion.query("DELETE FROM Posts WHERE id ?", id, (err, res) => {
+    mySQLConnexion.query("DELETE FROM Posts WHERE Posts.id= ?", id, (err, res) => {
         if (err) {
             callback(err, null);
             return;
         }
         if (res.affectedRows == 0) {
             callback({ kind: "not_found" }, null)
+            return;
         }
         callback(null, res);
     });
@@ -60,7 +61,7 @@ Post.removePost = (id, callback) => {
 // get one post
 
 Post.getOnePost = (postId, callback) => {
-    mySQLConnexion.query(`SELECT Posts.id, Posts.title, Posts.content, Posts.publish_date, Posts.author_id , Users.name, Users.surname FROM Posts JOIN Users  ON Posts.author_id = Users.id WHERE  posts.id=${postId} ORDER BY Posts.publish_date DESC`, (err, res) => {
+    mySQLConnexion.query(`SELECT Posts.id, Posts.title, Posts.content, Posts.publish_date, Posts.author_id , Users.name, Users.surname FROM Posts JOIN Users  ON Posts.author_id = Users.id WHERE  Posts.id=${postId} ORDER BY Posts.publish_date DESC`, (err, res) => {
         if (err) {
             callback(err, null);
             return;

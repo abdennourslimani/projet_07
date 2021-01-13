@@ -17,7 +17,6 @@ exports.signup = (req, res) => {
                 "surname": req.body.surname,
                 "email": req.body.email,
                 "password": hash,
-                // "isAdmin": req.body.isAdmin,
             }
             User.create(user, (err, data) => {
                 if (err)
@@ -45,6 +44,7 @@ exports.login = (req, res, next) => {
                 }
                 res.status(200).json({
                     userId: user.id,
+                    login: true,
                     token: jwt.sign({ userId: user.id },
                         'RANDOM_TOKEN_SECRET', { expiresIn: '24h' }
                     )
