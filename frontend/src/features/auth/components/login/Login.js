@@ -22,8 +22,12 @@ export default class Login extends Component {
 
                                    const token =response.data.token ;
                                    const userId =response.data.userId ;
+                                   const user =response.data.user ;
+
                                    localStorage.setItem('Token',token);
-                                   localStorage.setItem('userId',userId);                           
+                                   localStorage.setItem('userId',userId);  
+                                   localStorage.setItem('user',user);                           
+                         
                             
                            
                            
@@ -39,7 +43,8 @@ export default class Login extends Component {
 
       login=()=>{
         if(localStorage.getItem('Token') != null && localStorage.getItem('userId') != null){
-               this.props.login()
+              let user=localStorage.getItem('user')
+              //this.props.login(user) 
       }
     }
 

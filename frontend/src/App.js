@@ -73,6 +73,7 @@ logOut = () =>{
     localStorage.clear()
     this.setState({
         isLoggedIn:false,
+        user :[],
     })
 
 //window.location ="/login"  
@@ -81,17 +82,10 @@ logOut = () =>{
 
 
 
-login=() =>{
+login=(user) =>{
     this.setState({ 
         isLoggedIn:true,
-       
-    })
-}
-updateIsloggedInAdmin=(user) =>{
-    this.setState({
         user,
-        isloggedIn:true,
-        isAdmin :true
        
     })
 }
@@ -114,6 +108,18 @@ removePost = index => {
 
 }
 
+removeUser=index=>{
+    const user = [...this.state.user];
+    index = this.state.user[0];  
+    user.splice(index, 1);
+    this.setState({
+        user,
+});
+
+}
+
+
+
     updatePosts = posts =>{
         this.setState({
             posts,
@@ -134,7 +140,7 @@ removePost = index => {
     return (
     <Router>
                 <div className="App">
-                         <Header logOut={this.logOut} isLoggedIn={this.state.isLoggedIn}/>
+                         <Header  user={this.state.user} removeUser={this.removeUser}      logOut={this.logOut} isLoggedIn={this.state.isLoggedIn}/>
                         <Switch>
                             <Route path="/signup" component ={Register}></Route>
                             <Route path="/login"  render={ (props) => {
@@ -176,4 +182,3 @@ removePost = index => {
 export default App;
 
 
-//<PostDetails post={this.state.posts[this.state.selectedPost]}/>

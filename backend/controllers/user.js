@@ -20,7 +20,7 @@ exports.signup = (req, res) => {
             }
             User.create(user, (err, data) => {
                 if (err)
-                    res.status(500).json({ message: 'user not create !' + err })
+                    return res.status(500).json({ message: 'user not create !' + err })
                 else res.status(201).send(data);
             })
         }).catch(err => res.status(500).json({ message: 'there is an error :' + err }))
@@ -32,7 +32,7 @@ exports.login = (req, res, next) => {
     User.findByEmail(req.body.email, (err, user) => {
         if (err) {
             if (err.kind == 'not_found') {
-                res.status(404).send({ message: `user not found with ${req.body.email}` })
+                return res.status(404).send({ message: `user not found with ${req.body.email}` })
             } else {
                 res.status(500).send({ message: 'error to find user by email' + req.body.email })
             }
@@ -40,7 +40,7 @@ exports.login = (req, res, next) => {
         bcrypt.compare(req.body.password, user.password)
             .then(valid => {
                 if (!valid) {
-                    res.status(401).json({ error: 'password not true' });
+                    return res.status(401).json({ error: 'password not true' });
                 }
                 res.status(200).json({
                     userId: user.id,
@@ -62,9 +62,9 @@ exports.delete = (req, res, next) => {
     User.removeById(req.params.userId, (err, data) => {
         if (err) {
             if (err.kind == 'not_found') {
-                res.status(404).send({ message: 'user not found with' + err })
+                return res.status(404).send({ message: 'user not found with' + err })
             } else {
-                res.status(500).send({ message: 'error to find user by email' + req.params.userId })
+                return res.status(500).send({ message: `error to find user by ${req.params.userId}` + err })
             }
         }
         res.status(200).send({ message: 'user remove with success' })

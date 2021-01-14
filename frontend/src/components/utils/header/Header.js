@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import Styles from './header.module.css'
+import RemoveUser from'./removeUser/RemoveUser'
 
 
 function Header (props){
@@ -11,6 +12,8 @@ function Header (props){
          <a className={Styles.logo} href="/">Groupomania</a> 
           <div className={Styles.logout}>
             <NavLink to="/login" onClick={props.logOut}>logout</NavLink>
+            <RemoveUser  user={props.user} removeUser={props.removeUser}/>
+
           </div>
        </header>
         ):( 

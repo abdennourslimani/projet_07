@@ -8,7 +8,7 @@
 
     router.post('/signup', userCtrl.signup);
     router.post('/login', userCtrl.login);
-    router.delete('/:postId', auth, userCtrl.delete);
+    router.delete('/delete/:userId', auth, userCtrl.delete);
 
 
     module.exports = router;

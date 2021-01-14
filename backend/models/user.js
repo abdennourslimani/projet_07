@@ -47,7 +47,7 @@ User.findByEmail = (email, callback) => {
 //remove by id
 
 User.removeById = (id, callback) => {
-    mySQLConnexion.query("DELETE FROM Users WHERE id = ?", id, (err, res) => {
+    mySQLConnexion.query("DELETE FROM Users WHERE Users.id = ?", id, (err, res) => {
         if (err) {
             callback(err, null);
             return;
