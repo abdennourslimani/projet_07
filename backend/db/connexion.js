@@ -4,7 +4,7 @@ const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: 'root',
-    database: 'DB_PROJECT7',
+    database: 'GropomaniaDB',
     port: 3306,
 });
 

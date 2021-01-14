@@ -22,7 +22,7 @@ function Posts (props){
             </div>
       </div>
     ):( 
-        <Loading/>
+       <Loading/>
     )}
     </>
 

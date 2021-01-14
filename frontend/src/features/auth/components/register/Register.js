@@ -19,10 +19,12 @@ export default class Register extends Component {
         console.log({values,actions})
         actions.setSubmitting(false)
         actions.resetForm();
-        axios.post('http://localhost:3000/api/auth/signup',values).then(Response =>{
-            console.log(Response)
-        })
-
+        axios.post('http://localhost:3000/api/auth/signup',values)
+                    .then(Response =>{
+                        console.log(Response)
+                   
+            })
+            window.location('/login')
 
     }
          userSchema = Yup.object().shape({
