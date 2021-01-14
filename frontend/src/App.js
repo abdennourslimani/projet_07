@@ -16,9 +16,11 @@ class App extends Component {
         super(props);
         this.state ={
             posts : [],
-            isloggedIn:false,
+            user:[] , 
+            isLoggedIn:false,
             selectedPost:0,
-            loaded:false
+            loaded:false,
+            isAdmin : false , 
         }
     }
 
@@ -56,8 +58,37 @@ componentDidMount(){
             })
 
             .catch(err => console.log(err))
+
+    if(localStorage.getItem('Token') != null && localStorage.getItem('userId') != null){
+        this.setState({isLoggedIn: true}); 
+    }else if (localStorage.getItem('Token') == null && localStorage.getItem('userId') ==null){
+        this.setState({isLoggedIn: false}); 
+    }
 }
 
+logOut = () =>{
+    localStorage.clear()
+
+//window.location ="/login"  
+}
+
+
+
+
+updateIsloggedIn=() =>{
+    this.setState({ 
+        isLoggedIn:true,
+       
+    })
+}
+updateIsloggedInAdmin=(user) =>{
+    this.setState({
+        user,
+        isloggedIn:true,
+        isAdmin :true
+       
+    })
+}
 
 
 addPost = post => {
@@ -97,7 +128,7 @@ removePost = index => {
     return (
     <Router>
                 <div className="App">
-                         <Header isloggedIn={this.state.isloggedIn}/>
+                         <Header logOut={this.logOut} isLoggedIn={this.state.isLoggedIn}/>
                         <Switch>
                             <Route path="/signup" component ={Register}></Route>
                             <Route path="/login"  render={ (props) => {
@@ -106,7 +137,8 @@ removePost = index => {
                                     { ...props } 
                                     loaded={this.state.loaded}
                                     posts={this.state.posts}
-                                    isloggedIn={this.state.isloggedIn}
+                                    isLoggedIn={this.state.isLoggedIn}
+                                    updateIsloggedIn={this.updateIsloggedIn}
                                     />
                                 )
                             }} />

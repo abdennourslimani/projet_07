@@ -16,13 +16,22 @@ export default class Login extends Component {
         actions.setSubmitting(false)
         actions.resetForm();
         axios.post('http://localhost:3000/api/auth/login',values)
-                        .then(Response =>{
-                            console.log(Response.data)
-                            const token =Response.data.token ;
-                            const userId =Response.data.userId ;
-                            localStorage.setItem('Token',token);
-                            localStorage.setItem('userId',userId);
-                            // window.location='/posts'
+                        .then(response =>{
+                            console.log(response)
+                        
+
+                                   const token =response.data.token ;
+                                   const userId =response.data.userId ;
+                                   localStorage.setItem('Token',token);
+                                   localStorage.setItem('userId',userId);
+                            
+                            
+                            
+                            /*else if (response.data.login && this.props.isloggedIn ===false && response.data.user.isAdmin){
+                                 this.props.updateIsloggedInAdmin(response.data.user)
+                            }*/
+                           
+                            window.location='/posts'
                        
       })
 
@@ -32,18 +41,10 @@ export default class Login extends Component {
                     password: Yup.string().min(5, 'Trop court').required('required')
       });
 
-   /* validate(values) {
-        let errors = {};
-        if(!values.name){
-            errors.name='required'
-        }
-       else if(values.name && values.name.length < 5 ){
-            errors.name = 'trop court' ; 
-        }
-        return errors ; 
-    }*/
+
 
   render() {
+   
     return (
         <div className={Styles.container} >
             <Formik 
@@ -70,7 +71,7 @@ export default class Login extends Component {
                 <ErrorMessage name="password"  component = {CustomError}/>
               
                 <button type="submit" className="btn btn-dark" disabled={isSubmitting}>
-                        Connexion
+                        connexion
                 </button>
           </form>
             )}

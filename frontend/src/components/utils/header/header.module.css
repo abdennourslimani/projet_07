@@ -43,6 +43,23 @@
     color: #FFCC66;
 }
 
+.logout {
+    color: #e9ecef;
+    cursor: pointer;
+    font-weight: bold;
+    border: 2px solid #e9ecef;
+    padding: 0.5rem;
+}
+
+.logout:hover {
+    color: #18020C;
+    text-align: center;
+    text-decoration: none;
+    background-color: #FFCC66;
+    font-weight: 900;
+    border: 2px solid #18020C;
+}
+
 
 /*dee2e6*/
 
