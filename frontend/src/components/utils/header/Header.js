@@ -7,10 +7,10 @@ function Header (props){
     return(
     <>    
     { props.isLoggedIn ? (
-       <header className={Styles.container}>
-          <a className={Styles.flex_left} href="/">Groupomania</a> 
-          <div>
-            <NavLink to="/login"className={Styles.logout} onClick={props.logOut}>logout</NavLink>
+       <header className={Styles.containerLogout}>
+         <a className={Styles.logo} href="/">Groupomania</a> 
+          <div className={Styles.logout}>
+            <NavLink to="/login" onClick={props.logOut}>logout</NavLink>
           </div>
        </header>
         ):( 
@@ -30,6 +30,7 @@ function Header (props){
     )
     
 }
+//<NavLink to="/login" >RemoveAccount</NavLink>
 
 
 

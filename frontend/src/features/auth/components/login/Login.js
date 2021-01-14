@@ -23,13 +23,9 @@ export default class Login extends Component {
                                    const token =response.data.token ;
                                    const userId =response.data.userId ;
                                    localStorage.setItem('Token',token);
-                                   localStorage.setItem('userId',userId);
+                                   localStorage.setItem('userId',userId);                           
                             
-                            
-                            
-                            /*else if (response.data.login && this.props.isloggedIn ===false && response.data.user.isAdmin){
-                                 this.props.updateIsloggedInAdmin(response.data.user)
-                            }*/
+                           
                            
                             window.location='/posts'
                        
@@ -41,10 +37,16 @@ export default class Login extends Component {
                     password: Yup.string().min(5, 'Trop court').required('required')
       });
 
+      login=()=>{
+        if(localStorage.getItem('Token') != null && localStorage.getItem('userId') != null){
+               this.props.login()
+      }
+    }
 
 
   render() {
-   
+      
+
     return (
         <div className={Styles.container} >
             <Formik 
@@ -70,7 +72,7 @@ export default class Login extends Component {
                 <Field  name ="password"  type ="password" label ="password" placeholder="your password" component ={CustomInput}/>
                 <ErrorMessage name="password"  component = {CustomError}/>
               
-                <button type="submit" className="btn btn-dark" disabled={isSubmitting}>
+                <button onClick={this.login}type="submit" className="btn btn-dark" disabled={isSubmitting}>
                         connexion
                 </button>
           </form>

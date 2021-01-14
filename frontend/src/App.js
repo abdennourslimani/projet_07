@@ -60,7 +60,10 @@ componentDidMount(){
             .catch(err => console.log(err))
 
     if(localStorage.getItem('Token') != null && localStorage.getItem('userId') != null){
-        this.setState({isLoggedIn: true}); 
+        this.setState({
+            isLoggedIn: true
+            
+        }); 
     }else if (localStorage.getItem('Token') == null && localStorage.getItem('userId') ==null){
         this.setState({isLoggedIn: false}); 
     }
@@ -68,6 +71,9 @@ componentDidMount(){
 
 logOut = () =>{
     localStorage.clear()
+    this.setState({
+        isLoggedIn:false,
+    })
 
 //window.location ="/login"  
 }
@@ -75,7 +81,7 @@ logOut = () =>{
 
 
 
-updateIsloggedIn=() =>{
+login=() =>{
     this.setState({ 
         isLoggedIn:true,
        

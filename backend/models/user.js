@@ -1,6 +1,6 @@
 const mySQLConnexion = require("./../db/connexion");
 
-const User = (user) => {
+const User = function(user) {
     this.id = user.id ? user.id : null;
     this.name = user.name ? user.name : null;
     this.surname = user.surname ? user.surname : null;

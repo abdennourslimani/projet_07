@@ -45,7 +45,6 @@ exports.login = (req, res, next) => {
                 res.status(200).json({
                     userId: user.id,
                     user: user,
-                    login: true,
                     token: jwt.sign({ userId: user.id },
                         'RANDOM_TOKEN_SECRET', { expiresIn: '24h' }
                     )
@@ -63,7 +62,7 @@ exports.delete = (req, res, next) => {
     User.removeById(req.params.userId, (err, data) => {
         if (err) {
             if (err.kind == 'not_found') {
-                res.status(404).send({ message: 'user not found with' + req.params.userId })
+                res.status(404).send({ message: 'user not found with' + err })
             } else {
                 res.status(500).send({ message: 'error to find user by email' + req.params.userId })
             }
