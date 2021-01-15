@@ -2,36 +2,36 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import Styles from './header.module.css'
 import RemoveUser from'./removeUser/RemoveUser'
-
+import Logo from'./Logo'
 
 function Header (props){
-    return(
-    <>    
-    { props.isLoggedIn ? (
-       <header className={Styles.containerLogout}>
-         <a className={Styles.logo} href="/">Groupomania</a> 
-          <div className={Styles.logout}>
-            <NavLink to="/login" onClick={props.logOut}>logout</NavLink>
-            <RemoveUser  user={props.user} removeUser={props.removeUser}/>
+  return(
+  <>    
+  { props.isLoggedIn ? (
+     <header className={Styles.container}>
+       <Logo/>
+        <div className={Styles.flex_right}>
+          <NavLink to="/login" onClick={props.logOut}>logout</NavLink>
+          <RemoveUser  user={props.user} removeUser={props.removeUser}/>
 
+        </div>
+     </header>
+      ):( 
+        <header className={Styles.container}>
+          <Logo/>
+          <div className={Styles.flex_right}>
+               <NavLink to="/signup" activeClassName="active" disabled> Sign up </NavLink>
+               <NavLink to="/login" activeClassName="active"> Login</NavLink>
           </div>
-       </header>
-        ):( 
-          <header className={Styles.container}>
-            <a className={Styles.flex_left} href="/">Groupomania</a>  
-            <div className={Styles.flex_right}>
-                 <NavLink to="/signup" className="nav-link active" disabled> Sign up </NavLink>
-                 <NavLink to="/login" className="nav-link active" > Login</NavLink>
-            </div>
-               
-          </header>
-        )
-    
-    }
-    </>
+             
+        </header>
+      )
+  
+  }
+  </>
 
-    )
-    
+  )
+  
 }
 //<NavLink to="/login" >RemoveAccount</NavLink>
 

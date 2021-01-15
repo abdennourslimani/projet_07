@@ -66,16 +66,16 @@ export default class Register extends Component {
         }) => ( 
             <form onSubmit={ handleSubmit } className={Styles.form}>
                 <span>Register</span>
-                <Field  name ="name" label ="name" placeholder="Ex : zizou" component ={CustomInput}/>
+                <Field  name ="name" id="name" label ="name" placeholder="Ex : zizou" component ={CustomInput}/>
                 <ErrorMessage name="name" component = {CustomError}/>                  
                 
-                 <Field  name ="surname" label ="surname" placeholder="Ex :salomon" component ={CustomInput}/>
+                 <Field  name ="surname" id="surname" label ="surname" placeholder="Ex :salomon" component ={CustomInput}/>
                  <ErrorMessage name="surname" component = {CustomError}/>                  
                
-                <Field  name ="email" type="email" placeholder="Ex : abc@msn.fr" label ="email" component ={CustomInput}/>
+                <Field  name ="email" id="email" type="email" placeholder="Ex : abc@msn.fr" label ="email" component ={CustomInput}/>
                 <ErrorMessage name="email" component = {CustomError}/>                        
                
-                <Field  name ="password"  type ="password" label ="password" placeholder="choose a password" component ={CustomInput}/>
+                <Field  name ="password" id="password" type ="password" label ="password" placeholder="choose a password" component ={CustomInput}/>
                 <ErrorMessage name="password" component = {CustomError}/>
               
                 <button type="submit" className="btn btn-dark" disabled={isSubmitting}>

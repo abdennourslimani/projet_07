@@ -71,11 +71,11 @@ export default class Login extends Component {
         }) => ( 
             <form onSubmit={ handleSubmit } className={Styles.form}> 
             <span>Login</span>                                     
-                <Field  name ="email" type="email" label ="email" placeholder="Ex : abc@msn.fr" component ={CustomInput}/>
+                <Field  name ="email" id="email" type="email" label ="email" placeholder="Ex : abc@msn.fr" component ={CustomInput}/>
                 <ErrorMessage name="email"  component = {CustomError}/>                        
                
-                <Field  name ="password"  type ="password" label ="password" placeholder="your password" component ={CustomInput}/>
-                <ErrorMessage name="password"  component = {CustomError}/>
+                <Field  name ="password"  id="password"  type ="password" label ="password" placeholder="your password" component ={CustomInput}/>
+                <ErrorMessage name="password" component = {CustomError}/>
               
                 <button onClick={this.login}type="submit" className="btn btn-dark" disabled={isSubmitting}>
                         connexion

@@ -1,10 +1,10 @@
 .container {
-    background-color: #212529;
+    background-color: #091f43;
     display: flex;
     justify-content: space-evenly;
     height: 6rem;
     align-items: center;
-    border-bottom: 10px solid #FFCC66;
+    border-bottom: 10px solid #ba4d55;
 }
 
 .flex_right {
@@ -28,7 +28,10 @@
     background-color: #FFCC66;
     color: #18020C;
     font-weight: bold;
-    border-radius: 10rem;
+}
+
+.flex_right a:nth-child(1) {
+    margin-right: 3.5rem;
 }
 
 .flex_left {

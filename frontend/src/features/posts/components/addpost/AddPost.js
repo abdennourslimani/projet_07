@@ -59,17 +59,17 @@ export default class AddPost extends Component {
         }) => ( 
             <form onSubmit={ handleSubmit } className={Styles.container}> 
                 <span>Add your article</span>                                     
-                <Field  name ="title" type="text"  placeholder='title' component ={CustomInput}/>
+                <Field  id="title" name ="title" type="text"  placeholder='title' component ={CustomInput}/>
                 <ErrorMessage name="title" component = {CustomError}/>    
 
 
                 <div className={Styles.uploadImage}>
-                    <input  id="image" name ="image" type="file"  placeholder="content" onChange={(event) => {setFieldValue("image", event.currentTarget.files[0] ) }}/>
+                    <input  name ="image" type="file"  placeholder="content" onChange={(event) => {setFieldValue("image", event.currentTarget.files[0] ) }}/>
                 </div>                    
                
 
                
-                <Field  name ="content"  type ="text"  placeholder="content" component ={CustomInput}/>
+                <Field  name ="content"  id ="content" type ="text"  placeholder="content" component ={CustomInput}/>
                 <ErrorMessage name="password" component = {CustomError}/>
                 
                 <button type="submit" className="btn btn-dark"  disabled={isSubmitting}>
