@@ -15,14 +15,14 @@ import RemovePost from'./removePost/RemovePost';
   
     render() {
       
-        const comment = this.props.comment.map(function(com, idx) {
+        const comment =this.props.comment ? this.props.comment.map(function(com, idx) {
             return ([
               <div className={Styles.comments}>
                  <p key={com.id} >{com.comment}</p>
                 <span key={com.id} >published:{com.publish_date}</span>
             </div>
             ]);
-        });
+        }): null ;
 
       return (
         <>   
@@ -36,7 +36,10 @@ import RemovePost from'./removePost/RemovePost';
               <span className={Styles.titlecomment}>Comments : </span> 
               <AddComment addPost={this.props.addPost} post={this.props.post}/>
                 {comment}
-                <RemovePost  post={this.props.post} removePost={this.props.removePost} /> 
+                {this.props.user.isAdmin || this.props.user.id === this.props.post.author_id ?
+              <RemovePost  post={this.props.post} removePost={this.props.removePost} /> : null 
+              }
+                
 
 
           </div>

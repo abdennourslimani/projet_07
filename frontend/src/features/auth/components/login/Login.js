@@ -20,14 +20,14 @@ export default class Login extends Component {
                             console.log(response)
                         
 
-                                   const token =response.data.token ;
-                                   const userId =response.data.userId ;
-                                   const user =response.data.user ;
+                                const token =response.data.token ;
+                                const userId =response.data.userId ;
+                                const user =response.data.user ;
 
-                                   localStorage.setItem('Token',token);
+                                      localStorage.setItem('Token',token);
                                    localStorage.setItem('userId',userId);  
-                                   localStorage.setItem('user',user);                           
-                         
+                                   localStorage.setItem('user',JSON.stringify(user));                           
+                                  
                             
                            
                            

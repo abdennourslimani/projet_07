@@ -15,6 +15,7 @@ export default class PostList extends Component {
           key={p.id} 
           comment={p.comments}
           post={p}
+          user={this.props.user}
           updateSelectedPost={() => { this.props.updateSelectedPost(index) }} 
           removePost={() => { this.props.removePost(index) }} 
           addPost={this.props.addPost}

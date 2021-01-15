@@ -41,14 +41,14 @@ componentDidMount(){
                             name:`${post.name} ${post.surname}`,
                             publish_date:post.publish_date,
                             image_url:post.image_url,
-                            comments:post.comments.map(comment=>{
+                            comments:post.comments ? post.comments.map(comment=>{
                                 return {
                                     comment : comment.comment,
                                     publish_date:comment.publish_date,
                                 }
         
         
-                            }),   
+                            }):null ,   
                                         
                         }
                 })
@@ -61,7 +61,8 @@ componentDidMount(){
 
     if(localStorage.getItem('Token') != null && localStorage.getItem('userId') != null){
         this.setState({
-            isLoggedIn: true
+            isLoggedIn: true,
+            user : JSON.parse(localStorage.getItem('user'))
             
         }); 
     }else if (localStorage.getItem('Token') == null && localStorage.getItem('userId') ==null){
@@ -85,7 +86,7 @@ logOut = () =>{
 login=(user) =>{
     this.setState({ 
         isLoggedIn:true,
-        user,
+        user : JSON.parse(localStorage.getItem('user'))
        
     })
 }
@@ -164,7 +165,8 @@ removeUser=index=>{
                                     selectedPost={this.state.selectedPost} 
                                     updatePosts={this.updatePosts}   
                                     addPost={this.addPost} 
-                                    removePost={this.removePost}           
+                                    removePost={this.removePost}
+                                    user={this.state.user}           
                                     />
                                 )
                             }} />

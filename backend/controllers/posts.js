@@ -32,7 +32,7 @@ exports.getAllPosts = (req, res) => {
                     res.status(500).send({ message: 'no comments found!' + err });
                 } else {
                     comments.forEach(com => {
-                        console.log('je suis com' + com);
+                        console.log('je suis com', com);
                         let post = posts.find(elt => elt.id === com.post_id)
                         if (post !== undefined && post.comments !== undefined && post.comments.length > 0) {
                             post.comments.push(com);
