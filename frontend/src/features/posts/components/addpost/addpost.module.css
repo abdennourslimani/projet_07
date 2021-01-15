@@ -1,5 +1,5 @@
 .container {
-    background-color: #18191a;
+    background-color: #122442;
     display: flex;
     flex-direction: column;
     width: 50%;
@@ -8,22 +8,18 @@
 
 .container span {
     color: #e9ecef;
-    text-align: center;
     margin-bottom: 1rem;
+    font-weight: 900;
+    margin-left: 13rem;
 }
 
 .container button {
-    margin-left: 18rem;
+    display: block;
+    border-radius: 10rem;
     margin-top: 1rem;
-    width: 15%;
-    color: rgb(37, 27, 27);
     font-weight: 900;
-}
-
-.container button:hover {
-    background-color: teal;
-    color: rgb(37, 27, 27);
-    font-weight: 900;
+    width: 30%;
+    margin-left: 12rem;
 }
 
 .uploadImage input {
@@ -31,9 +27,13 @@
     margin-bottom: 11px;
     height: 30px;
     border-radius: 10rem;
-    width: 82%;
+    width: 76%;
     font-weight: 700;
     background-color: #2f807f;
+}
+
+.uploadImage label {
+    display: none;
 }
 
 .container label {

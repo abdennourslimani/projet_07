@@ -7,7 +7,6 @@
     flex-direction: column;
     box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.7);
     cursor: pointer;
-    background-color: #242526;
     border-radius: 2rem;
 }
 
@@ -64,11 +63,12 @@
 
 .comments p {
     margin-bottom: 0;
-    font-size: 14px;
+    font-size: 16px;
     color: #e9ecef;
     font-family: inherit;
+    font-weight: 600;
 }
 
 .comments span {
-    font-size: 6px;
+    font-size: 13px;
 }

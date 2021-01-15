@@ -12,7 +12,7 @@ function Logo (props){
     <>    
     { 
     
-        <img className={Styles.container} src={logo}/>
+        <img className={Styles.container} alt="logo_gropomania" src={logo}/>
 
     }
     </>

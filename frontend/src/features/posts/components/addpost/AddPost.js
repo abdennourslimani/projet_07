@@ -64,7 +64,8 @@ export default class AddPost extends Component {
 
 
                 <div className={Styles.uploadImage}>
-                    <input  name ="image" type="file"  placeholder="content" onChange={(event) => {setFieldValue("image", event.currentTarget.files[0] ) }}/>
+                    <label htmlFor="image">upload image</label>
+                    <input  name ="image" type="file" id="image" placeholder="content" onChange={(event) => {setFieldValue("image", event.currentTarget.files[0] ) }}/>
                 </div>                    
                
 

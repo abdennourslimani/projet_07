@@ -20,7 +20,7 @@ import apiPost from './../../../../../../conf/axios.post'
     render() {
       return (
           <div className={Styles.container}>
-                <button type ="submit" onClick={this.removePost}>Remove</button>
+                <button type ="submit" className="btn btn-danger" onClick={this.removePost}>Remove</button>
           </div>
       );
   

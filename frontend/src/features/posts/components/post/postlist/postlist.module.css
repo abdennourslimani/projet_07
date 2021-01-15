@@ -1,9 +1,8 @@
 .container {
     display: flex;
     flex-direction: column;
-    text-align: justify;
     align-items: center;
     justify-content: space-around;
-    background-color: #18191a;
+    background-color: #122442;
     margin: 0 auto;
 }

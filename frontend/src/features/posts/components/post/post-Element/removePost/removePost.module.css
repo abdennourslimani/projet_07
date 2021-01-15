@@ -3,13 +3,3 @@
 .container h1 {
     color: white;
 }
-
-.container button {
-    background-color: rgb(197 30 30);
-    color: black;
-    font-weight: 800;
-    border-radius: 8%;
-    padding: 0.3rem 0.7rem;
-    border: none;
-    margin-left: 1rem;
-}

@@ -47,7 +47,10 @@ export default class AddComment extends Component {
             <form onSubmit={ handleSubmit } className={Styles.form}> 
                 <Field  name ="comment" id="comment" type="text" placeholder=" Add your comment" component ={CustomInput}/>
                 <ErrorMessage name="comment"  component = {CustomError}/> 
-                <input name="post_id" id="post_id" type="text" disabled ></input>                          
+                <div className={Styles.inputNoneComment}>
+                    <label for='post_id'>post_id</label>
+                    <input  name="post_id" id="post_id" type="text" disabled ></input>     
+                </div>                     
                 <button type="submit" className="btn btn-dark" disabled={isSubmitting}>
                       Add
                 </button>

@@ -1,5 +1,5 @@
 .container {
-    background-color: #18191a;
+    background-color: #122442;
     color: #e9ecef;
 }
 
@@ -7,7 +7,7 @@
     border-radius: 2rem;
     box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.7);
     padding: 2rem;
-    background-color: #242526;
+    background-color: #122442;
     margin-top: 29rem;
     margin-right: 3rem;
 }
@@ -30,15 +30,9 @@
     left: 11rem;
 }
 
-.postDetail p {
-    text-align: justify;
-}
-
 .postDetail span {
     font-size: 12px;
     position: relative;
-    top: -56rem;
-    left: 23rem;
 }
 
 

@@ -20,7 +20,7 @@ import apiAuth from './../../../../conf/axios.auth'
     render() {
       return (
           <div className={Styles.container}>
-                <button type ="submit" onClick={this.removePost}>RemoveAccount</button>
+                <button type ="submit" className='btn btn-danger' onClick={this.removePost}>RemoveAccount</button>
           </div>
       );
   

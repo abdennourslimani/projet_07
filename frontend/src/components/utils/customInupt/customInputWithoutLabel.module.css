@@ -1,9 +1,28 @@
+.container {
+    display: flex;
+    align-items: baseline;
+    padding-top: 2px;
+}
+
+.container label {
+    color: #e9ecef;
+    width: 25%;
+    font-size: 13px;
+    padding-left: 35px;
+    padding-right: 0.5rem;
+    font-weight: 800;
+}
+
 .container input {
-    width: 100%;
+    width: 90%;
     border-radius: 10rem;
     padding: 0.3rem;
     background-color: #242526;
     color: #e9ecef;
-    border: 1px solid #FFCC66;
+    border: 1px solid #ba4d55;
     margin-bottom: 10px;
+}
+
+.labelComment {
+    display: none;
 }
