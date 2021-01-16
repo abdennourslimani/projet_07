@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import Styles from './header.module.css'
-import RemoveUser from'./removeUser/RemoveUser'
+//import RemoveUser from'./removeUser/RemoveUser'
 import Logo from'./Logo'
 
 function Header (props){
@@ -12,7 +12,8 @@ function Header (props){
        <Logo/>
         <div className={Styles.flex_right}>
           <NavLink to="/login" onClick={props.logOut}>logout</NavLink>
-          <RemoveUser  user={props.user} removeUser={props.removeUser}/>
+          <NavLink to="/login" className="btn btn-danger" onClick={props.removeUser}>RemoveAccount</NavLink>
+
 
         </div>
      </header>
@@ -38,6 +39,7 @@ function Header (props){
 
 
 export default Header
+//          <RemoveUser  user={props.user} removeUser={props.removeUser}/>
 
 //<NavLink onClick={props.logOut()} to="/login" className="nav-link active" disabled> logout</NavLink>
 

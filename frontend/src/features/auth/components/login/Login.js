@@ -43,7 +43,7 @@ export default class Login extends Component {
 
       login=()=>{
         if(localStorage.getItem('Token') != null && localStorage.getItem('userId') != null){
-              let user=localStorage.getItem('user')
+              //let user=localStorage.getItem('user')
               //this.props.login(user) 
       }
     }

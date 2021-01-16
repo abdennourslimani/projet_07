@@ -2,6 +2,8 @@ import React,{Component } from 'react';
 import { Header} from './components'
 import {BrowserRouter as Router,Route ,Redirect,Switch} from 'react-router-dom'
 import apiPost  from './conf/axios.post';
+import apiAuth from './conf/axios.auth';
+
 import Posts from'./features/posts'
 import {  Login,Register} from './features/auth/components'
 
@@ -86,7 +88,7 @@ logOut = () =>{
 login=(user) =>{
     this.setState({ 
         isLoggedIn:true,
-        user : JSON.parse(localStorage.getItem('user'))
+        //user : JSON.parse(localStorage.getItem('user'))
        
     })
 }
@@ -109,15 +111,21 @@ removePost = index => {
 
 }
 
-removeUser=index=>{
-    const user = [...this.state.user];
-    index = this.state.user[0];  
-    user.splice(index, 1);
-    this.setState({
-        user,
-});
 
+removeUser=()=>{
+    apiAuth.delete(`/delete/${this.state.user.id}`,this.props.user)
+    .then(res =>{
+      if(res.data != null){
+          localStorage.clear();
+          this.setState({
+            isLoggedIn:false,
+            user :[],
+        })
+      }
+
+    })
 }
+
 
 
 
