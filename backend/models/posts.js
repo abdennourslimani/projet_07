@@ -16,7 +16,9 @@ const Post = function(post) {
 //create New Post 
 
 Post.createPost = (newPost, callback) => {
-    mySQLConnexion.query(`INSERT INTO Posts (title, image_url,content, author_id) VALUES ("${newPost.title}","${newPost.image_url}","${newPost.content}","${newPost.author_id}")`, (err, res) => {
+    let sql = `INSERT INTO Posts (title, image_url,content, author_id) VALUES (?,?,?,?)`;
+    let variables = [newPost.title, newPost.image_url, newPost.content, newPost.author_id];
+    mySQLConnexion.query(sql, variables, (err, res) => {
         if (err) {
             callback(err, null);
             console.log("there is an error when you try to create post: ", err);

@@ -13,7 +13,9 @@ const Comment = function(com) {
 
 
 Comment.createComment = (newComment, callback) => {
-    mySQLConnexion.query(`INSERT INTO Comments ( comment, author_id,post_id) VALUES ("${newComment.comment}","${newComment.author_id}",'${newComment.post_id}')`, (err, res) => {
+    let sql = 'INSERT INTO Comments ( comment, author_id,post_id) VALUES (?,?,?)';
+    let variables = [newComment.comment, newComment.author_id, newComment.post_id]
+    mySQLConnexion.query(sql, variables, (err, res) => {
         if (err) {
             callback(err, null);
             console.log("there is an error when you try to create comment: ", err);
@@ -23,6 +25,12 @@ Comment.createComment = (newComment, callback) => {
         callback(null, { id: res.insertId, ...newComment });
     });
 }
+
+
+
+
+
+
 
 
 Comment.getAllComments = callback => {
