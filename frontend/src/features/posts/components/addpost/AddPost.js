@@ -6,7 +6,7 @@ import CustomInput from '../../../../components/utils/customInupt/CustomInupt'
 import CustomError from '../../../../components/utils/customError/CustomError'
 
 
-import apiPost  from './../../../../conf/axios.post';
+import apiAxios  from '../../../../conf/axios.conf';
 import * as Yup from 'yup';
 
 export default class AddPost extends Component {
@@ -21,7 +21,7 @@ export default class AddPost extends Component {
         data.append('content', values.content)
 
 
-        apiPost.post("/add", data, {
+        apiAxios.post("post/add", data, {
             })
             .then(res => {
                 this.props.addPost(res.data)

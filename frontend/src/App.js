@@ -1,8 +1,7 @@
 import React,{Component } from 'react';
 import { Header} from './components'
 import {BrowserRouter as Router,Route ,Redirect,Switch} from 'react-router-dom'
-import apiPost  from './conf/axios.post';
-import apiAuth from './conf/axios.auth';
+import apiAxios  from './conf/axios.conf';
 
 import Posts from'./features/posts'
 import {  Login,Register} from './features/auth/components'
@@ -30,7 +29,7 @@ class App extends Component {
 
 
 componentDidMount(){
-    apiPost.get('/getAll')
+    apiAxios.get('post/getAll')
 
             .then(response => response.data)
             .then(postApi=> {   
@@ -113,7 +112,7 @@ removePost = index => {
 
 
 removeUser=()=>{
-    apiAuth.delete(`/delete/${this.state.user.id}`,this.props.user)
+    apiAxios.delete(`auth/delete/${this.state.user.id}`,this.props.user)
     .then(res =>{
       if(res.data != null){
           localStorage.clear();

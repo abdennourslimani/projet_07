@@ -5,7 +5,7 @@ import Styles from './addComment.module.css';
 import CustomInput from '../../../../../../components/utils/customInupt/CustomInputWithoutLabel'
 import CustomError from '../../../../../../components/utils/customError/CustomError'
 
-import apiComment from './../../../../../../conf/axios.comment';
+import apiAxios from '../../../../../../conf/axios.conf';
 import * as Yup from 'yup';
 
 
@@ -15,7 +15,7 @@ export default class AddComment extends Component {
         console.log({values ,actions})
          actions.setSubmitting(false)
         actions.resetForm();
-       apiComment.post('/add',values)
+       apiAxios.post('comment/add',values)
                         .then(res =>{
                          console.log(res)   
       })

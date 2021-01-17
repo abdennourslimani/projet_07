@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import Styles from'./removePost.module.css';
-import apiPost from './../../../../../../conf/axios.post'
+import apiAxios from '../../../../../../conf/axios.conf'
 
 
   export default class RemovePost extends Component {
 
       removePost = () =>{
-        apiPost.delete(`/delete/${this.props.post.id}`,this.props.post)
+        apiAxios.delete(`post/delete/${this.props.post.id}`,this.props.post)
             .then(res =>{
               console.log(res)
 
